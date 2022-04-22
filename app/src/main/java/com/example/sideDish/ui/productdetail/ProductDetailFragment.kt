@@ -52,9 +52,13 @@ class ProductDetailFragment : Fragment() {
         )
 
         viewModel.orderCount.observe(viewLifecycleOwner) {
-            binding.stepper.value.text = it.toString()
+            binding.stepper.binding.textViewStepperValue.text = it.toString()
             binding.textViewTotalCostFix.text =
-                "${DecimalFormat("#,###").format(it * (viewModel.detail.value?.discountedPrice ?: 0))}${resources.getString(R.string.money_unit)}"
+                "${DecimalFormat("#,###").format(it * (viewModel.detail.value?.discountedPrice ?: 0))}${
+                    resources.getString(
+                        R.string.money_unit
+                    )
+                }"
         }
 
         viewModel.detail.observe(viewLifecycleOwner) {
