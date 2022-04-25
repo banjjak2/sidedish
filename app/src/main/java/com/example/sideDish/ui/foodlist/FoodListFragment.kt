@@ -12,10 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sideDish.R
 import com.example.sideDish.common.EventObserver
 import com.example.sideDish.common.ViewModelFactory
-import com.example.sideDish.data.FoodCategory
+import com.example.sideDish.data.model.FoodCategory
 import com.example.sideDish.data.source.FoodRepository
 import com.example.sideDish.ui.productdetail.ProductDetailFragment
-import kotlin.concurrent.fixedRateTimer
 
 class FoodListFragment : Fragment() {
 
@@ -30,7 +29,7 @@ class FoodListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         viewModel = ViewModelProvider(
             requireActivity(),
-            ViewModelFactory(FoodRepository())
+            ViewModelFactory()
         ).get(FoodListViewModel::class.java)
 
         return layout
