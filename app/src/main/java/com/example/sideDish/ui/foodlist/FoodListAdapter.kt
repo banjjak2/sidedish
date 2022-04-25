@@ -40,30 +40,27 @@ class FoodListAdapter(private val viewModel: FoodListViewModel) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when (viewType) {
-            VIEW_TYPE_SECTION -> {
-                SectionViewHolder(
-                    DataBindingUtil.inflate(
-                        LayoutInflater.from(parent.context),
-                        R.layout.section,
-                        parent,
-                        false
-                    )
+        return when {
+            viewType < 0 -> SectionViewHolder(
+                DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.section,
+                    parent,
+                    false
                 )
-            }
-            VIEW_TYPE_CONTENT -> {
-                SummaryItemViewHolder(
-                    DataBindingUtil.inflate(
-                        LayoutInflater.from(parent.context),
-                        R.layout.main_summary_item,
-                        parent,
-                        false
-                    )
+            )
+            viewType == VIEW_TYPE_CONTENT -> SummaryItemViewHolder(
+                DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.main_summary_item,
+                    parent,
+                    false
                 )
-            }
-            else -> error("View Type을 찾을 수 없습니다.")
+            )
+            else -> error("View Type을 찾을 수 없습니다.${viewType}")
         }
     }
+
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
@@ -76,12 +73,18 @@ class FoodListAdapter(private val viewModel: FoodListViewModel) :
         }
     }
 
+    //        override fun getItemViewType(position: Int): Int {
+//        return when (getItem(position)) {
+//            is Item.Section -> VIEW_TYPE_SECTION
+//            is Item.FoodInfo -> VIEW_TYPE_CONTENT
+//        }
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
-            is Item.Section -> VIEW_TYPE_SECTION
+            is Item.Section -> position * -1 - 1
             is Item.FoodInfo -> VIEW_TYPE_CONTENT
         }
     }
+
 
     fun updateCategoryItems(category: FoodCategory) {
         viewModel.updateItems(category)
