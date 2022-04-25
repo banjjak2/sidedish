@@ -29,17 +29,7 @@ class FoodRepository {
     fun getMainItems(): List<Item> {
         return listOf(
             Item.Section(FoodCategory.MAIN),
-            Item.FoodInfo(
-                "오리 주물럭_반조리",
-                listOf("런칭특가"),
-                listOf("새벽배송", "전국택배"),
-                "감칠맛 나는 매콤한 양념",
-                "HBDEF",
-                "http://public.codesquad.kr/jk/storeapp/data/main/1155_ZIP_P_0081_T.jpg",
-                "15,800원",
-                "12,640원",
-                "오리 주물럭_반조리"
-            ),
+
             Item.FoodInfo(
                 "잡채",
                 listOf("이벤트특가"),
