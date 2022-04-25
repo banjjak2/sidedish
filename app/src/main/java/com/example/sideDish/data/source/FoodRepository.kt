@@ -2,8 +2,10 @@ package com.example.sideDish.data.source
 
 import com.example.sideDish.data.FoodCategory
 import com.example.sideDish.data.Item
+import javax.inject.Inject
 
-class FoodRepository {
+
+class FoodRepository @Inject constructor() {
     fun getFoodDetail(hash: String): FoodDetail {
         return FoodDetail(
             "2,500원 (40,000원 이상 구매 시 무료)",

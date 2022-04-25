@@ -13,7 +13,7 @@ class ViewModelFactory(private val repository: FoodRepository , private val hash
                 FoodListViewModel(repository) as T
             }
             modelClass.isAssignableFrom(FoodDetailViewModel::class.java) -> {
-                FoodDetailViewModel(repository , hash) as T
+                FoodDetailViewModel(repository) as T
             }
             else -> {
                 throw IllegalArgumentException()

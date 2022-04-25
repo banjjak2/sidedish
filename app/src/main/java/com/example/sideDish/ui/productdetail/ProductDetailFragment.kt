@@ -20,20 +20,19 @@ import com.example.sideDish.common.ViewModelFactory
 import com.example.sideDish.data.Item
 import com.example.sideDish.data.source.FoodRepository
 import com.example.sideDish.databinding.FragmentProductDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.DecimalFormat
 
+@AndroidEntryPoint
 class ProductDetailFragment : Fragment() {
     private lateinit var binding: FragmentProductDetailBinding
-    lateinit var viewModel: FoodDetailViewModel
+    val viewModel by viewModels<FoodDetailViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(FoodRepository(), "hash")).get(
-            FoodDetailViewModel::class.java
-        )
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_product_detail, container, false)
 

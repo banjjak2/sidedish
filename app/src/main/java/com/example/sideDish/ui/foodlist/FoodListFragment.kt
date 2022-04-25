@@ -15,8 +15,10 @@ import com.example.sideDish.common.ViewModelFactory
 import com.example.sideDish.data.FoodCategory
 import com.example.sideDish.data.source.FoodRepository
 import com.example.sideDish.ui.productdetail.ProductDetailFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.concurrent.fixedRateTimer
 
+@AndroidEntryPoint
 class FoodListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView

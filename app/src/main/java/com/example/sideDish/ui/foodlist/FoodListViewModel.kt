@@ -7,8 +7,11 @@ import com.example.sideDish.common.Event
 import com.example.sideDish.data.FoodCategory
 import com.example.sideDish.data.Item
 import com.example.sideDish.data.source.FoodRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FoodListViewModel(private val repository: FoodRepository) : ViewModel() {
+@HiltViewModel
+class FoodListViewModel @Inject constructor(private val repository: FoodRepository) : ViewModel() {
     private val _openDetail = MutableLiveData<Event<Boolean>>()
     val openDetail: LiveData<Event<Boolean>> = _openDetail
 

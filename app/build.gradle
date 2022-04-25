@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.kapt'
 }
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdk 32
@@ -34,9 +36,13 @@ android {
     dataBinding {
         enabled true
     }
+
 }
 
 dependencies {
+    implementation "com.google.dagger:hilt-android:2.40"
+    kapt "com.google.dagger:hilt-android-compiler:2.40"
+
     implementation "androidx.fragment:fragment-ktx:1.4.1"
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
