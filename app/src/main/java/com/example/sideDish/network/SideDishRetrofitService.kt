@@ -11,16 +11,16 @@ import retrofit2.http.Path
 interface SideDishRetrofitService {
 
     @GET("main")
-    fun getMainMenu(): Response<SideDishDto>
+    suspend fun getMainMenu(): Response<SideDishDto>
 
     @GET("side")
-    fun getSideMenu(): Response<SideDishDto>
+    suspend fun getSideMenu(): Response<SideDishDto>
 
     @GET("soup")
-    fun getSoupMenu(): Response<SideDishDto>
+    suspend fun getSoupMenu(): Response<SideDishDto>
 
     @GET("detail/{detailHash}")
-    fun getDetail(@Path("detailHash") detailHash: String): Response<DetailDto>
+    suspend fun getDetail(@Path("detailHash") detailHash: String): Response<DetailDto>
 
     companion object {
         private const val base_url = "https://api.codesquad.kr/onban/"

@@ -1,7 +1,5 @@
 package com.example.sideDish.data.model
 
-import com.example.sideDish.network.dto.DetailDto
-
 data class FoodDetail(
     val deliveryFee: String,
     val deliveryInfo: String,

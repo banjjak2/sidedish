@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.example.sideDish.R
 import com.example.sideDish.common.ViewModelFactory
@@ -17,16 +18,12 @@ import java.text.DecimalFormat
 
 class ProductDetailFragment : Fragment() {
     private lateinit var binding: FragmentProductDetailBinding
-    lateinit var viewModel: FoodDetailViewModel
+    val viewModel by viewModels<FoodDetailViewModel>{ViewModelFactory()}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        viewModel = ViewModelProvider(this, ViewModelFactory()).get(
-            FoodDetailViewModel::class.java
-        )
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_product_detail, container, false)
 
@@ -62,7 +59,8 @@ class ProductDetailFragment : Fragment() {
 
             binding.stepper.value.text = it.toString()
             binding.textViewTotalCostFix.text =
-                DecimalFormat("#,###").format(it * (discountedPrice?.filter { price -> price.isDigit() }?.toInt() ?: 0))
+                DecimalFormat("#,###").format(it * (discountedPrice?.filter { price -> price.isDigit() }
+                    ?.toInt() ?: 0))
         }
     }
 
