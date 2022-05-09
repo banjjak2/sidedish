@@ -5,9 +5,9 @@
     <string name="food_image_desc_string">Food Image</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="event_price">이벤트 특가</string>
-    <string name="limited_price">한정 특가</string>
-    <string name="launch_price">런치 특가</string>
+    <string name="event_price">이벤트특가</string>
+    <string name="limited_price">한정특가</string>
+    <string name="launch_price">런칭특가</string>
 
     <string name="reserves">적립금</string>
     <string name="delivery_info">배송 정보</string>
@@ -15,4 +15,7 @@
     <string name="count">수량</string>
     <string name="total_price">총 주문 금액</string>
     <string name="order">주문하기</string>
+
+    <string name="money_unit">원</string>
+    <string name="google_login_string">Google로 로그인하기</string>
 </resources>
